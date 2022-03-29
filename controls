@@ -5,23 +5,25 @@ from bullet import Bullet
 
 def events(screen, gun, bullets):
     for event in pygame.event.get():
-
         if event.type == pygame.QUIT:
             sys.exit()
-
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 gun.kright = True
             if event.key == pygame.K_a:
-                gun.kleft = False
+                gun.kleft = True
             if event.key == pygame.K_w:
-                gun.kup = False
+                gun.kup = True
             if event.key == pygame.K_s:
-                gun.kdown = False
+                gun.kdown = True
 
-            if event.key == pygame.K_SPACE:
+
+            elif event.key == pygame.K_SPACE:
                 new_bullet = Bullet(screen, gun)
                 bullets.add(new_bullet)
+                pygame.mixer.music.load('mp3/erro.mp3')
+                pygame.mixer.music.play(0)
+
 
         elif event.type == pygame.KEYUP:
             if event.key == pygame.K_d:
@@ -40,3 +42,4 @@ def kill(bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     print(len(bullets))
+
