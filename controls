@@ -18,6 +18,15 @@ def events(screen, gun, bullets):
                 gun.kdown = True
 
 
+            if event.key == pygame.K_l:
+                gun.kright2 = True
+            if event.key == pygame.K_j:
+                gun.kleft2 = True
+            if event.key == pygame.K_i:
+                gun.kup2 = True
+            if event.key == pygame.K_k:
+                gun.kdown2 = True
+
             elif event.key == pygame.K_SPACE:
                 new_bullet = Bullet(screen, gun)
                 bullets.add(new_bullet)
@@ -42,4 +51,3 @@ def kill(bullets):
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
     print(len(bullets))
-
